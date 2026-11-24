@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Stage Supplier Selection | DAA Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <h2>SupplyChain<span>Optimizer</span></h2>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#problem">Problem</a>
+            <a href="#stages">Stages</a>
+            <a href="#matrices">Cost Matrices</a>
+            <a href="#algorithms">Algorithms</a>
+            <a href="#analysis">Analysis</a>
+        </div>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <p class="tag">DESIGN AND ANALYSIS OF ALGORITHMS</p>
+    <h1>Multi-Stage Supplier Selection</h1>
+    <h2>Optimizing Medicine Supply Chains Using Dynamic Programming</h2>
+    <p>
+        Find the minimum-cost path through suppliers, manufacturers,
+        distributors and hospitals using Dynamic Programming.
+    </p>
+    <a href="#algorithms" class="main-btn">Explore Algorithm</a>
+</section>
+
+<section class="section" id="problem">
+    <h2>Problem Statement</h2>
+    <p>
+        A medicine passes through four sequential stages:
+        Raw Material Supplier, Manufacturer, Distributor and Hospital.
+        Each stage contains multiple options, and every transition
+        has an associated cost.
+    </p>
+    <p>
+        The objective is to select exactly one option from each stage
+        so that the total supply-chain cost is minimized.
+    </p>
+</section>
+
+<section class="section" id="stages">
+    <h2>Four Stages of the Supply Chain</h2>
+
+    <div class="cards">
+        <div class="card">
+            <div class="number">01</div>
+            <h3>Raw Material Supplier</h3>
+            <p>Provides ingredients required for medicine production.</p>
+            <b>R1 | R2 | R3</b>
+        </div>
+
+        <div class="card">
+            <div class="number">02</div>
+            <h3>Manufacturer</h3>
+            <p>Converts raw materials into finished medicines.</p>
+            <b>M1 | M2 | M3</b>
+        </div>
+
+        <div class="card">
+            <div class="number">03</div>
+            <h3>Distributor</h3>
+            <p>Stores and transports medicines to healthcare facilities.</p>
+            <b>D1 | D2 | D3</b>
+        </div>
+
+        <div class="card">
+            <div class="number">04</div>
+            <h3>Hospital</h3>
+            <p>Receives medicines for patient treatment.</p>
+            <b>H1 | H2 | H3</b>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="matrices">
+    <h2>Cost Matrix Representation</h2>
+    <p class="subtitle">All cost values are illustrative units.</p>
+
+    <div class="matrix-container">
+        <h3>Suppliers → Manufacturers</h3>
+        <table>
+            <tr><th></th><th>M1</th><th>M2</th><th>M3</th></tr>
+            <tr><th>R1</th><td>4</td><td>8</td><td>6</td></tr>
+            <tr><th>R2</th><td>5</td><td>3</td><td>7</td></tr>
+            <tr><th>R3</th><td>9</td><td>6</td><td>4</td></tr>
+        </table>
+    </div>
+
+    <div class="matrix-container">
+        <h3>Manufacturers → Distributors</h3>
+        <table>
+            <tr><th></th><th>D1</th><th>D2</th><th>D3</th></tr>
+            <tr><th>M1</th><td>5</td><td>7</td><td>4</td></tr>
+            <tr><th>M2</th><td>6</td><td>3</td><td>8</td></tr>
+            <tr><th>M3</th><td>4</td><td>5</td><td>2</td></tr>
+        </table>
+    </div>
+
+    <div class="matrix-container">
+        <h3>Distributors → Hospitals</h3>
+        <table>
+            <tr><th></th><th>H1</th><th>H2</th><th>H3</th></tr>
+            <tr><th>D1</th><td>3</td><td>6</td><td>5</td></tr>
+            <tr><th>D2</th><td>4</td><td>2</td><td>7</td></tr>
+            <tr><th>D3</th><td>6</td><td>3</td><td>4</td></tr>
+        </table>
+    </div>
+</section>
+
+<section class="section" id="algorithms">
+    <h2>Algorithm Execution</h2>
+    <p class="subtitle">
+        Both algorithms execute in the C++ backend.
+    </p>
+
+    <div class="algorithm-buttons">
+        <button onclick="runDP()">Run Dynamic Programming</button>
+        <button onclick="runBruteForce()">Run Brute Force</button>
+    </div>
+
+    <div id="loading" class="loading"></div>
+
+    <div id="result" class="result hidden">
+        <h3 id="resultTitle">Algorithm Result</h3>
+
+        <div class="result-cards">
+            <div class="result-card">
+                <p>Minimum Cost</p>
+                <h2 id="minimumCost">-</h2>
+            </div>
+
+            <div class="result-card">
+                <p>Optimal Path</p>
+                <h2 id="optimalPath">-</h2>
+            </div>
+
+            <div class="result-card">
+                <p>Combinations Checked</p>
+                <h2 id="combinations">-</h2>
+            </div>
+        </div>
+
+        <div id="dpTableContainer">
+            <h3>Dynamic Programming Table</h3>
+            <table id="dpTable"></table>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="analysis">
+    <h2>Complexity Analysis</h2>
+
+    <table class="complexity-table">
+        <tr>
+            <th>Algorithm</th>
+            <th>Time Complexity</th>
+            <th>Space Complexity</th>
+        </tr>
+        <tr>
+            <td>Brute Force</td>
+            <td>O(N<sup>S</sup>)</td>
+            <td>O(S)</td>
+        </tr>
+        <tr>
+            <td>Dynamic Programming</td>
+            <td>O(S × N²)</td>
+            <td>O(S × N)</td>
+        </tr>
+    </table>
+
+    <p>
+        For 4 stages with 3 options per stage, brute force checks
+        3<sup>4</sup> = 81 complete paths. Dynamic Programming
+        reuses previously computed subproblems to reduce repeated work.
+    </p>
+</section>
+
+<footer>
+    <h3>Multi-Stage Supplier Selection</h3>
+    <p>Design and Analysis of Algorithms Project</p>
+    <p>Dynamic Programming on Multistage Graphs</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

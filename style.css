@@ -1,0 +1,291 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1120;
+    color: #e8edf5;
+    line-height: 1.7;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: #111c30;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar h2 {
+    color: white;
+}
+
+.navbar span {
+    color: #35d6bd;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #35d6bd;
+}
+
+.hero {
+    text-align: center;
+    padding: 110px 20px;
+    background: linear-gradient(135deg, #142943, #102c36);
+}
+
+.tag {
+    color: #35d6bd;
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 43px;
+    margin: 18px 0;
+}
+
+.hero h2 {
+    color: #35d6bd;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: 10px auto 25px;
+    color: #cbd5e1;
+}
+
+.main-btn {
+    display: inline-block;
+    background: #35d6bd;
+    color: #071521;
+    padding: 12px 25px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    padding: 75px 8%;
+}
+
+.section h2 {
+    font-size: 30px;
+    color: #35d6bd;
+    margin-bottom: 20px;
+}
+
+.section p {
+    color: #cbd5e1;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    margin-bottom: 25px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #15243a;
+    padding: 25px;
+    border: 1px solid #263d55;
+    border-radius: 12px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    color: #35d6bd;
+}
+
+.card b {
+    color: #f5bd62;
+}
+
+.number {
+    font-size: 28px;
+    color: #35d6bd;
+    font-weight: bold;
+}
+
+.matrix-container {
+    background: #15243a;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    max-width: 650px;
+}
+
+.matrix-container h3 {
+    color: #35d6bd;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #35475e;
+}
+
+th {
+    background: #20364e;
+    color: #35d6bd;
+}
+
+td {
+    color: #f1f5f9;
+}
+
+.algorithm-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 7px;
+    background: #35d6bd;
+    color: #071521;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #20bda7;
+    transform: translateY(-2px);
+}
+
+.result {
+    margin-top: 30px;
+    padding: 25px;
+    background: #15243a;
+    border-radius: 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+.result h3 {
+    color: #35d6bd;
+    margin-bottom: 20px;
+}
+
+.result-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.result-card {
+    background: #20364e;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.result-card h2 {
+    color: #f5bd62;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+#dpTableContainer {
+    margin-top: 25px;
+}
+
+.loading {
+    color: #35d6bd;
+    margin: 15px 0;
+}
+
+.complexity-table {
+    margin: 25px 0;
+}
+
+footer {
+    text-align: center;
+    background: #111c30;
+    padding: 35px;
+}
+
+footer h3 {
+    color: #35d6bd;
+}
+
+footer p {
+    color: #cbd5e1;
+}
+
+@media(max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media(max-width: 600px) {
+    .cards,
+    .result-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .section {
+        padding: 50px 6%;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+}
